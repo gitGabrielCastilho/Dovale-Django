@@ -63,11 +63,8 @@ def login(request):
                 is_cart_item_exists = CartItem.objects.filter(cart=cart).exists()
                 if is_cart_item_exists:
                     cart_item = CartItem.objects.filter(cart=cart)
-                    cart_item = CartItem.objects.filter(user=user)
-                    id = []
-                    cart_item = CartItem.objects.filter(cart=cart)
+                    
                     for item in cart_item:
-                        id.append(item.id)
                         item.user = user
                         item.save()
  
@@ -75,11 +72,11 @@ def login(request):
                 pass
 
             auth.login(request, user)
-            messages.success(request, 'You are now logged in.') 
+            messages.success(request, 'Você está conectado!') 
             return redirect('dashboard')
         
         else:
-            messages.error(request, 'Invalid login credentials')
+            messages.error(request, 'Email ou Senha incorreto(s)!')
             return redirect('login')
     return render(request, 'accounts/login.html')
 
