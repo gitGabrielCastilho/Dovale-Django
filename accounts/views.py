@@ -13,6 +13,7 @@ from django.core.mail import EmailMessage
 
 from carts.views import _cart_id
 from carts.models import Cart, CartItem
+import requests
 # Create your views here.
 
 def register(request):
@@ -79,8 +80,6 @@ def login(request):
                         ex_var_list.append(list(existing_variation))
                         id.append(item.id)
 
-                    # product_variation = [1, 2, 3, 4, 6]
-                    # ex_var_list = [4, 6, 3, 5]
 
                     for pr in product_variation:
                         if pr in ex_var_list:
@@ -99,12 +98,19 @@ def login(request):
                 pass
             
             auth.login(request, user)
-            messages.success(request, 'You are now logged in.')
-
-            return redirect('dashboard')
+            messages.success(request, 'Você está conectado')
+            url = request.META.get('HTTP_REFERER')
+            try:
+                query = requests.utils.urlparse(url).query
+                params = dict(x.split('=') for x in query.split('&'))
+                if 'next' in params:
+                    nextPage = params['next']
+                    return redirect(nextPage)
+            except:
+                return redirect('dashboard')
         
         else:
-            messages.error(request, 'Invalid login credentials')
+            messages.error(request, 'Usuário ou Senha incorreto(s)!')
             return redirect('login')
     return render(request, 'accounts/login.html')
 
