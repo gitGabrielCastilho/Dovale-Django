@@ -151,3 +151,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'gabrielmcastilho@gmail.com'
 EMAIL_HOST_PASSWORD = 'gtatfocqzhblixfq'
 EMAIL_USE_TLS = True
+
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
