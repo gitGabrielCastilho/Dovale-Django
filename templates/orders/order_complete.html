@@ -76,14 +76,14 @@
                                           				</p>
                                                 </td>
                                                 <td class="text-center">{{item.quantity}}</td>
-                                                <td class="text-center">${{item.product_price}} BRL</td>
+                                                <td class="text-center">R${{item.product_price}} BRL</td>
                                             </tr>
                                           {% endfor %}
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th colspan="2" class="text-right">Total:</th>
-                                                <th class="text-center">${{order.order_total}} BRL</th>
+                                                <th class="text-center">R${{order.order_total}} BRL</th>
                                             </tr>
                                         </tfoot>
                                     </table>
