@@ -32,7 +32,7 @@ class Order(models.Model):
     phone = models.CharField(max_length=15)
     email = models.EmailField(max_length=50)
     address_line_1 = models.CharField(max_length=50)
-    address_line_2 = models.CharField(max_length=50, blank=True)
+    zip_code = models.CharField(max_length=8, blank=True)
     country = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
@@ -69,3 +69,6 @@ class OrderProduct(models.Model):
 
     def __str__(self):
         return self.product.product_name
+    
+# class FreteSedex(models.Model):
+#     cep_origem =

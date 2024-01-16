@@ -72,7 +72,7 @@ class Account(AbstractBaseUser):
 class UserProfile(models.Model):
     user = models.OneToOneField(Account, on_delete=models.CASCADE)
     address_line_1 = models.CharField(blank=True, max_length=100)
-    address_line_2 = models.CharField(blank=True, max_length=100)
+    zip_code = models.CharField(blank=True, max_length=8)
     profile_picture = models.ImageField(blank=True, upload_to='userprofile')
     city = models.CharField(blank=True, max_length=20)
     state = models.CharField(blank=True, max_length=20)

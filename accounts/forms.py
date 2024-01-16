@@ -22,7 +22,7 @@ class RegistrationForm(forms.ModelForm):
 
         if password != confirm_password:
             raise forms.ValidationError(
-                "Password does not match!"
+                "As senhas são diferentes!"
             )
 
     def __init__(self, *args, **kwargs):
@@ -49,7 +49,7 @@ class UserProfileForm(forms.ModelForm):
     profile_picture = forms.ImageField(required=False, error_messages = {'invalid':("Image files only")}, widget=forms.FileInput)
     class Meta:
         model = UserProfile
-        fields = ('address_line_1', 'address_line_2', 'city', 'state', 'country', 'profile_picture')
+        fields = ('address_line_1', 'zip_code', 'city', 'state', 'country', 'profile_picture')
 
     def __init__(self, *args, **kwargs):
         super(UserProfileForm, self).__init__(*args, **kwargs)
