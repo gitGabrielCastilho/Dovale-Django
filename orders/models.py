@@ -49,7 +49,7 @@ class Order(models.Model):
         return f'{self.first_name} {self.last_name}'
 
     def full_address(self):
-        return f'{self.address_line_1} {self.address_line_2}'
+        return f'{self.address_line_1} {self.zip_code}'
 
     def __str__(self):
         return self.first_name
@@ -70,5 +70,8 @@ class OrderProduct(models.Model):
     def __str__(self):
         return self.product.product_name
     
-# class FreteSedex(models.Model):
-#     cep_origem =
+class FreteSedex(models.Model):
+    cep_inicial = models.CharField(max_length = 8)
+    cep_final = models.CharField(max_length = 8)
+    peso_maximo = models.CharField(max_length = 10)
+    preco_frete = models.CharField(max_length = 10)
