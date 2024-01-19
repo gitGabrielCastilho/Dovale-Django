@@ -11,7 +11,7 @@ from django.template.loader import render_to_string
 
 # Create your views here.
 
-def place_order(request, total=0, quantity=0,):
+def place_order(request, total=0, quantity=0, weight = 0, frete = 0, produtos = 0,):
     current_user = request.user
 
     # If the cart count is less than or equal to 0, then redirect back to shop
@@ -23,7 +23,25 @@ def place_order(request, total=0, quantity=0,):
     for cart_item in cart_items:
         total += (cart_item.product.price * cart_item.quantity)
         quantity += cart_item.quantity
+        weight = quantity*1000
+    
+    if (weight < 5000) and (weight > 0):
+        frete = 25
+    elif (weight >= 5000) and (weight < 10000):
+        frete = 30
+    elif (weight >= 10000) and (weight < 15000):
+        frete = 35
+    elif (weight >= 15000) and (weight < 20000):
+        frete = 40
+    elif (weight >= 20000) and (weight < 25000):
+        frete = 45
+    elif (weight >= 25000) and (weight < 30000):
+        frete = 50
+    else:
+        frete = 100
 
+    total = frete + total
+    produtos = total - frete
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -58,6 +76,8 @@ def place_order(request, total=0, quantity=0,):
                 'order': order,
                 'cart_items': cart_items,
                 'total': total,
+                'frete': frete,
+                'produtos': produtos,
 
             }
             return render(request, 'orders/payments.html', context)

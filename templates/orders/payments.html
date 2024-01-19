@@ -17,7 +17,7 @@
 					<div class="card-body">
 						<p class="card-text mb-0">{{order.full_name}}</p>
 						<p class="card-text mb-0">{{order.full_address}}</p>
-						<p class="card-text mb-0">{{order.zip_code}}</p>
+						<p class="card-text mb-0">CEP {{order.zip_code}}</p>
 						<p class="card-text mb-0">{{order.city}}, {{order.state}}</p>
 						<p class="card-text mb-0">{{order.country}}</p>
 						<p class="card-text mb-0">{{order.email}}</p>
@@ -92,6 +92,14 @@
 
 				<div class="card">
 					<div class="card-body">
+						<dl class="dlist-align">
+							<dt>Produtos:</dt>
+							<dd class="text-right">R$ {{produtos}}</dd>
+						</dl>
+						<dl class="dlist-align">
+							<dt>Frete:</dt>
+							<dd class="text-right">R$ {{frete}}</dd>
+						</dl>
 						<dl class="dlist-align">
 							<dt>Total:</dt>
 							<dd class="text-right">R$ {{total}}</dd>

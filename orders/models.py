@@ -70,8 +70,3 @@ class OrderProduct(models.Model):
     def __str__(self):
         return self.product.product_name
     
-class FreteSedex(models.Model):
-    cep_inicial = models.CharField(max_length = 8)
-    cep_final = models.CharField(max_length = 8)
-    peso_maximo = models.CharField(max_length = 10)
-    preco_frete = models.CharField(max_length = 10)

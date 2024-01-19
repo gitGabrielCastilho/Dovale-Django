@@ -108,8 +108,8 @@
       	</td>
       	<td>
       		<div class="price-wrap">
-      			<var class="price">$ {{ cart_item.sub_total }}</var>
-      			<small class="text-muted"> $ {{ cart_item.product.price }} Cada </small>
+      			<var class="price">R$ {{ cart_item.sub_total }}</var>
+      			<small class="text-muted"> R$ {{ cart_item.product.price }} Cada </small>
       		</div> <!-- price-wrap .// -->
       	</td>
 
@@ -119,8 +119,8 @@
       </tbody>
       </table>
 
-      <button type="submit" name="submit" class="btn btn-primary btn-block">Pagamento</button>
-			<a href="{% url 'store' %}" class="btn btn-light btn-block">Continue Comprando</a>
+        <button type="submit" name="submit" class="btn btn-primary btn-block">Pagamento</button>
+			  <a href="{% url 'store' %}" class="btn btn-light btn-block">Continue Comprando</a>
       </form>
 		</div> <!-- card-body.// -->
 		</div> <!-- card.// -->
